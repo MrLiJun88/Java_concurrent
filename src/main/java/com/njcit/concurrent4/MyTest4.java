@@ -15,7 +15,7 @@ public class MyTest4 {
     public static void main(String[] args) {
         BoundedContainer container = new BoundedContainer();
         //放置线程
-        IntStream.range(0,8).forEach(i -> new Thread(() -> {
+        IntStream.range(0,10).forEach(i -> new Thread(() -> {
             try{
                 container.put("hello" + i);
             }
@@ -24,7 +24,7 @@ public class MyTest4 {
             }
         }).start());
         //取出线程
-        IntStream.range(0,10).forEach(i -> new Thread(() -> {
+        IntStream.range(0,8).forEach(i -> new Thread(() -> {
             try{
                 container.take();
             }
@@ -34,6 +34,7 @@ public class MyTest4 {
         }).start());
     }
 }
+
 /**定义一个有界容器*/
 class BoundedContainer {
     private String[] elements = new String[10];
